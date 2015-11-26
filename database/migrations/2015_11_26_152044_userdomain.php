@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DomainEmailTable extends Migration
+class Userdomain extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,12 @@ class DomainEmailTable extends Migration
      */
     public function up()
     {
-        //
+          Schema::create('userdomain', function(Blueprint $table)
+    {
+      $table->increments('id');
+      $table->string('useremail')->unique();
+     
+    });
     }
 
     /**
@@ -22,6 +27,7 @@ class DomainEmailTable extends Migration
      */
     public function down()
     {
-         Schema::drop('DomailEmailTable');
+        //
+		Schema::drop('userdomain');
     }
 }

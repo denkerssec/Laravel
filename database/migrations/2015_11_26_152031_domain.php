@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DomainEmail extends Migration
+class Domain extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class DomainEmail extends Migration
      */
     public function up()
     {
-     Schema::create('DomainEmail', function(Blueprint $table)
+         Schema::create('domain', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->string('domainemail')->unique();
-      
+      $table->string('emaildomain')->unique();
+     
     });
     }
 
@@ -28,6 +28,6 @@ class DomainEmail extends Migration
     public function down()
     {
         //
-		 Schema::drop('DomainEmail');
+		Schema::drop('domain');
     }
 }
