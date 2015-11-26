@@ -15,7 +15,7 @@ class DomainEmail extends Migration
      Schema::create('DomainEmail', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->string('domailname')->unique();
+      $table->string('domailemail')->unique();
       
     });
     }
