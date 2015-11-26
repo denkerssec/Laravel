@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 @if ( !$posts->count() )
-There is no post until now. Login and write a new post now!!!
+There is no e-mail domain!
 @else
 <div class="">
   @foreach( $posts as $post )
