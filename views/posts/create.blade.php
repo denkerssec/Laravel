@@ -1,9 +1,9 @@
 @extends('app')
 @section('title')
-Add New Post
+Add New Domain
 @endsection
 @section('content')
-<form action="/new-post" method="post">
+<form action="/new-domain" method="post">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <div class="form-group">
     <input required="required" value="{{ old('title') }}" placeholder="Enter title here" type="text" name = "title"class="form-control" />
