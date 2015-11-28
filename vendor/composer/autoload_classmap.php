@@ -518,4 +518,6 @@ return array(
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'User' => $baseDir . '/database/migrations/2015_11_26_125350_user.php',
     'Userdomain' => $baseDir . '/database/migrations/2015_11_26_152044_userdomain.php',
+    'domain' => $baseDir . '/database/seeds/domain.php',
+    'userdomain' => $baseDir . '/database/seeds/userdomain.php',
 );

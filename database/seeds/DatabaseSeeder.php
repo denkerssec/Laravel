@@ -14,7 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+     DB::table('domain')->insert([
+            'emaildomain' => str_random(6).'.com',
+        ]);
+		
+		  DB::table('userdomain')->insert([
+            'useremail' => str_random(10).'@'.'gmail.com',
+        ]);
 
         Model::reguard();
     }
