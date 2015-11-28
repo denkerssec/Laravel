@@ -1,20 +1,21 @@
 @extends('app')
 @section('title')
-  @if($domain)
-    {{ $domain->title }}
-      <button class="btn" style="float: right"><a href="{{ url('edit/'.$domain->slug)}}">Edit domain</a></button>
+  @if($post)
+    {{ $post->title }}
+    @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
+      <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
     @endif
   @else
     Page does not exist
   @endif
 @endsection
 @section('title-meta')
-<p>{{ $domain->created_at->format('M d,Y \a\t h:i a') }}</a></p>
+<p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></p>
 @endsection
 @section('content')
-@if($domain)
+@if($post)
   <div>
-    {!! $domain->body !!}
+    {!! $post->body !!}
   </div>    
   <div>
     <h2>Leave a comment</h2>
@@ -23,14 +24,14 @@
     <p>Login to Comment</p>
   @else
     <div class="panel-body">
-      <form method="domain" action="/comment/add">
+      <form method="post" action="/comment/add">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="on_domain" value="{{ $domain->id }}">
-        <input type="hidden" name="slug" value="{{ $domain->slug }}">
+        <input type="hidden" name="on_post" value="{{ $post->id }}">
+        <input type="hidden" name="slug" value="{{ $post->slug }}">
         <div class="form-group">
           <textarea required="required" placeholder="Enter comment here" name = "body" class="form-control"></textarea>
         </div>
-        <input type="submit" name='domain_comment' class="btn btn-success" value = "domain"/>
+        <input type="submit" name='post_comment' class="btn btn-success" value = "Post"/>
       </form>
     </div>
   @endif
