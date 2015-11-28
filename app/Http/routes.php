@@ -11,6 +11,12 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+
+Route::get('/','DomainController@index');
+Route::get('/home',['as' => 'home', 'uses' => 'DomainController@index']);
+
