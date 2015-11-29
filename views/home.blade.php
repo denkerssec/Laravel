@@ -11,26 +11,19 @@ There is no e-mail domain!
   <div class="list-group">
 	<div class="table">
 			<?php
-				$servername = "localhost";
-				$username = "root";
-				$password = "root";
-				$dbname = "BEC";
-
-				// Create connection
-				$conn = new mysqli($servername, $username, $password, $dbname);
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				} 
-
-				$sql = "SELECT id, firstname, lastname FROM MyData";
+				$sql = "SELECT id, domain, userdomain FROM MyData";
 				$result = $conn->query($sql);
-
+				
+				<h4>Email Domain</h4>
+				   @foreach ($emaildomain->emaildomain as $emaildomain) 
+					   <p>{{ $emaildomain->name }}</p>
+				   @endforeach
+				
 				if ($result->num_rows > 0) {
 					echo "<table><tr><th>ID</th><th>Name</th></tr>";
 					// output data of each row
 					while($row = $result->fetch_assoc()) {
-						echo "<tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>";
+						echo "<tr><td>".$row["id"]."</td><td>".$row["domain"]." ".$row["userdomain"]."</td></tr>";
 					}
 					echo "</table>";
 				} else {
