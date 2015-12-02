@@ -8,7 +8,7 @@ class domain extends Model
 {
     protected $table = 'domain';
 	
-	$domain = domain::all();
+	//$domain = domain::all();
 	protected $fillable = array('emaildomain');
 
 }

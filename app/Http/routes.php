@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/* Route::get('/domain', function() {
+    $domain = new App\domain();
+    
+    $data = $domain->all(array('emaildomain','id'));
+
+    foreach ($data as $list) {
+        echo $list->id . ' ' . $list->emaildomain .'</br>';
+    }
+}); */
+
+Route::get('/userdomain', function() {
+    $userdomain = new App\userdomain();
+    
+    $data = $userdomain->all(array('useremail','id'));
+
+    foreach ($data as $list) {
+        echo $list->id . ' ' . $list->useremail .'</br>';
+    }
+});
