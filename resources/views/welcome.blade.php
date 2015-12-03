@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Denkers</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -38,7 +38,27 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Denkers</div>
+					<table>
+						<?php
+							error_reporting(E_ALL | E_STRICT);
+
+							$inputString = 'First key this is the first value Second second value Thirt key 20394';
+							$keys = ['First key', 'Second', 'Thirt key'];
+
+							$res = [];
+							foreach ($keys as $currentKey => $key) {
+								$posNextKey = ($currentKey + 1 > count($keys)-1) // is this the last key/value pair?
+											  ? strlen($inputString) // then there is no next key, we just take all of it
+											  : strpos($inputString, $keys[$currentKey+1]); // else, we find the index of the next key
+								$currentKeyLen = strlen($key);
+								$res[$key] = substr($inputString, $currentKeyLen+1 /*exclude preceding space*/, $posNextKey-1-$currentKeyLen-1 /*exclude trailing space*/);
+								$inputString = substr($inputString, $posNextKey);
+							}
+
+							print_r($res);
+						?>
+					</table>
             </div>
         </div>
     </body>
